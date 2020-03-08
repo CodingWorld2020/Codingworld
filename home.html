@@ -1,50 +1,173 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-<!---JQUERY CDN-->
+	<title>Coding World</title>
 	<script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+	
+	<style type="text/css">
+		body
+		{
+			margin: 0px;
+			padding: 0px;
+			background:url(1.png);
+			background-size: cover;
 
-	<script src="animate.js"></script>
+		}
+		#main
+		{
+			height: 100vh;
+			width: 100%;
+			position:absolute;
+			overflow: hidden;
+			z-index: 999;
+			transition: all .3s;
+		}
+		#icon
+		{
+			height: 25px;
+			width: 30px;
+			position: fixed;
+			bottom: 20px;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			z-index: 999;
+		}
+		#icon:hover
+		{
+			cursor: pointer;
+		}
+		#line
+		{
+			height: 5px;
+			width: 30px;
+			background-color: black;
+			position: absolute;
+			bottom: 50%;
+			left: 50%;
+			transition: .5s;
+			transform: translate(-50%,-50%);
+		}
+		#line:before
+		{
+			content: '';
+			height: 5px;
+			width: 30px;
+			background-color: white;
+			transition: .5s;
+			position: absolute;
+			top: -10px;
 
-	<title>FULL SCREEN NAVIGATION BAR</title>
+		}
+		#line:after
+		{
+			content: '';
+			height: 5px;
+			width: 30px;
+			background-color: white;
+			position: absolute;
+			top: 10px;
 
-
+		}
+		#menu
+		{
+		height: 100px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		
+		color: white;
+		font-family: sans-serif;
+		font-weight: bold;
+		letter-spacing: 3px;	
+		animation: slideIn .5s forwards;
+		}
+		#m1
+		{
+			height: 100px;
+			width: 10%;
+			text-align: center;
+			float: left;
+			position: absolute;
+			top: 100%;
+			left: 25%; 
+		}
+	#m2
+		{
+			height: 100px;
+			width: 10%;
+			text-align: center;
+			float: left;
+			position: absolute;
+			top: 100%;
+			left: 35%; 
+		}
+			#m3
+		{
+			height: 100px;
+			width: 10%;
+			text-align: center;
+			float: right;
+			position: absolute;
+			top: 100%;
+			right:25%; 
+		}
+	#m4
+		{
+			height: 100px;
+			width: 10%;
+			text-align: center;
+			float: right;
+			position: absolute;
+			top: 100%;
+			right:  35%; 
+		}
+	</style>
 
 </head>
 <body>
-
-<div id="bg">
-	<h1>coding world</h1>
-</div>
 <div id="main">
-	<img src="dot.png" id="icon">
-<div id="menu">
-	<ul>
-		<li><a href="#">HOME</a></li>
-		<li><a href="#">ABOUT</a></li>
-		<li><a href="#">SERVICES</a></li>
-		<li><a href="#">WORK</a></li>
-		<li><a href="#">CONTACT</a></li>
-	</ul>
-</div>
-</div>
-<div id="menu_circle_layer"></div>
-<div id="social_media">
-	<div id="container">
-		<div id="msg">FOLLOW US</div>
-		<ul>
-			<li><a href="#">@Facebook.com/Coding world</a></li>
-			<li><a href="#">@Twitter.com/Coding world</a></li>
-			<li><a href="#">@Instagram.com/Coding world</a></li>
-		</ul>
+	<div id="icon">
+		<div id="line"></div>
+	</div>
+	<div id="menu">
+		<div id="m1">WORK</div>
+		<div id="m2">SERVICES</div>
+		<div id="m3">CONTACT</div>
+		<div id="m4">ABOUT</div>
 	</div>
 </div>
-<div id="social_circle_layer"></div>
-
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		flag=0;
+		$("#icon").click(function(){
+		if (flag==0) {
+			$("#main").css('box-shadow','inset 0px 0px 0px 60px #6BAEBE,inset 0px -50px 0px 60px #6BAEBE');
+			$('#main').css('background-color','rgba(0,0,0,.3)');
+			
+			
+			$('#m1').animate({top:'40%'},200);
+			$('#m2').animate({top:'40%'},200);
+			$('#m3').animate({top:'40%'},200);
+			$('#m4').animate({top:'40%'},200);
+			flag=1;
+		}
+		else
+		{
+	$("#main").css('box-shadow','inset 0px 0px 0px 0px #6BAEBE,inset 0px 00px 0px 00px #6BAEBE');
+			$('#main').css('background-color','rgba(0,0,0,0)');
+			$('#m1').animate({top:'100%'},200);
+			$('#m2').animate({top:'100%'},200);
+			$('#m3').animate({top:'100%'},200);
+			$('#m4').animate({top:'100%'},200);
+			flag=0;
+		
+		}
+
+		});
+	});
+</script>
 </html>
